@@ -18,6 +18,7 @@ import com.airatgaliev.hourse_min_path.model.Hourse;
 import com.airatgaliev.hourse_min_path.model.interfaces.Chessman;
 import com.airatgaliev.hourse_min_path.service.BoardPathFinder;
 import com.airatgaliev.hourse_min_path.service.Board;
+import org.springframework.hateoas.Link;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
@@ -39,10 +40,15 @@ public class HoursePathController {
             @RequestParam(defaultValue = "H8") String end) {
         int minPath = getMinPathCaught(start, end, width, height);
         Count count = new Count(String.format(TEMPLATE, minPath));
-        count.add(linkTo(methodOn(HoursePathController.class).count(width, height, start.toUpperCase(), end.toUpperCase())).withSelfRel());
+        count.add(buildLink(width, height, start, end));
 
         return ResponseEntity.ok(count);
 
+    }
+
+    private static Link buildLink(int width, int height, String start, String end) {
+        return linkTo(methodOn(HoursePathController.class).count(width, height, start.toUpperCase(), end.toUpperCase())
+        ).withSelfRel();
     }
 
     private int getMinPathCaught(String start, String end, int width, int height) throws NumberFormatException {
