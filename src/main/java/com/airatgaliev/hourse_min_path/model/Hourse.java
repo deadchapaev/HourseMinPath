@@ -10,12 +10,27 @@ public class Hourse implements Chessman {
     private int dx[] = {-2, -1, 1, 2, -2, -1, 1, 2};
     private int dy[] = {-1, -2, -2, -1, 1, 2, 2, 1};
 
+    @Override
     public int getDx(int index) {
         return dx[index];
     }
 
+    @Override
     public int getDy(int index) {
         return dy[index];
+    }
+
+    @Override
+    public ChessBoardCell getNextCellFrom(ChessBoardCell from, int possibleMovement) {
+        int x1 = from.getX() + dx[possibleMovement];
+        int y1 = from.getY() + dy[possibleMovement];
+        int distance = from.getDist() + 1;
+        return new ChessBoardCell(x1, y1, y1);
+    }
+
+    @Override
+    public int getPossibleMovementCnt() {
+        return 8;
     }
 
 }
