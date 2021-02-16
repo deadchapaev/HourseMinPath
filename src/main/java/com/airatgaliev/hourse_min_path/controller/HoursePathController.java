@@ -1,5 +1,6 @@
 package com.airatgaliev.hourse_min_path.controller;
 
+import com.airatgaliev.hourse_min_path.model.ChessBoardCell;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import com.airatgaliev.hourse_min_path.model.Count;
 import com.airatgaliev.hourse_min_path.model.Hourse;
 import com.airatgaliev.hourse_min_path.model.interfaces.Chessman;
 import com.airatgaliev.hourse_min_path.service.BFS;
+import com.airatgaliev.hourse_min_path.service.Board;
 
 @RestController
 @RequestMapping(value = "/hourse/rest")
@@ -39,7 +41,12 @@ public class HoursePathController {
             startY = Integer.parseInt(start.toUpperCase().replaceAll("[A-Z]", "")) - 1;
             endX = NumberFromExcelColumn(end.replaceAll("[0-9]", ""));
             endY = Integer.parseInt(end.toUpperCase().replaceAll("[A-Z]", "")) - 1;
-            minPath = bfs.getMinPath(width, height, startX, startY, endX, endY, hourse);
+
+            Board board = new Board(width, height);
+            ChessBoardCell startChessBoardCell = new ChessBoardCell(startX, startY);
+            ChessBoardCell endChessBoardCell = new ChessBoardCell(endX, endY);
+
+            minPath = bfs.getMinPath(board, startChessBoardCell, endChessBoardCell, hourse);
         } catch (NullPointerException e) {
             minPath = -1;
         }
