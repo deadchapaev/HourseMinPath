@@ -1,6 +1,6 @@
 package com.airatgaliev.hourse_min_path.controller;
 
-import com.airatgaliev.hourse_min_path.model.ChessBoardCell;
+import com.airatgaliev.hourse_min_path.model.Cell;
 
 /**
  *
@@ -8,10 +8,10 @@ import com.airatgaliev.hourse_min_path.model.ChessBoardCell;
  */
 public class CellUtils {
 
-    public static ChessBoardCell parseCell(String position) throws NumberFormatException {
+    public static Cell parseCell(String position) throws NumberFormatException {
         int x = NumberFromExcelColumn(position.replaceAll("[0-9]", ""));
         int y = Integer.parseInt(position.toUpperCase().replaceAll("[A-Z]", "")) - 1;
-        return new ChessBoardCell(x, y);
+        return new Cell(x, y);
     }
 
     public static int NumberFromExcelColumn(String column) {

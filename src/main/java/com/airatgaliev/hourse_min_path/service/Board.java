@@ -1,6 +1,6 @@
 package com.airatgaliev.hourse_min_path.service;
 
-import com.airatgaliev.hourse_min_path.model.ChessBoardCell;
+import com.airatgaliev.hourse_min_path.model.Cell;
 
 /**
  *
@@ -15,7 +15,7 @@ public class Board {
         this.height = height;
     }
 
-    public boolean contains(ChessBoardCell chessBoardCell) {
+    public boolean contains(Cell chessBoardCell) {
         return chessBoardCell.getX() >= 0 && chessBoardCell.getX() < width
                 && chessBoardCell.getY() >= 0 && chessBoardCell.getY() < height;
     }

@@ -1,16 +1,16 @@
 package com.airatgaliev.hourse_min_path.model;
 
-public class ChessBoardCell {
+public class Cell {
 
     private final int x, y, dist; // координаты ячейки и минимальный путь
 
-    public ChessBoardCell(int x, int y) {
+    public Cell(int x, int y) {
         this.x = x;
         this.y = y;
         this.dist = 0;
     }
 
-    public ChessBoardCell(int x, int y, int dist) {
+    public Cell(int x, int y, int dist) {
         this.x = x;
         this.y = y;
         this.dist = dist;
@@ -37,15 +37,15 @@ public class ChessBoardCell {
             return false;
         }
 
-        ChessBoardCell chessBoard = (ChessBoardCell) o;
+        Cell cell = (Cell) o;
 
-        if (x != chessBoard.x) {
+        if (x != cell.x) {
             return false;
         }
-        if (y != chessBoard.y) {
+        if (y != cell.y) {
             return false;
         }
-        return dist == chessBoard.dist;
+        return dist == cell.dist;
     }
 
     @Override
@@ -56,7 +56,7 @@ public class ChessBoardCell {
         return result;
     }
 
-    public boolean isCurrentPosition(ChessBoardCell other) {
+    public boolean isCurrentPosition(Cell other) {
         return this.x == other.x && this.y == other.y;
     }
 

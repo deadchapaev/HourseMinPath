@@ -7,30 +7,30 @@ import java.util.Set;
 
 import org.springframework.stereotype.Component;
 
-import com.airatgaliev.hourse_min_path.model.ChessBoardCell;
+import com.airatgaliev.hourse_min_path.model.Cell;
 import com.airatgaliev.hourse_min_path.model.interfaces.Chessman;
 
 @Component
 public class BoardPathFinder<T extends Chessman> {
 
-    public int findMinPath(Board board, ChessBoardCell startChessBoardCell, ChessBoardCell endChessBoardCell, T t) {
+    public int findMinPath(Board board, Cell startCell, Cell endCell, T t) {
 
-        if (!board.contains(startChessBoardCell) || board.contains(endChessBoardCell)) {
+        if (!board.contains(startCell) || board.contains(endCell)) {
             return -1;
         }
 
         // проверка, посещена ли ячейка матрицы раньше или нет
-        Set<ChessBoardCell> visited = new HashSet<>();
+        Set<Cell> visited = new HashSet<>();
 
         // создать очередь и поставить в очередь первый узел
-        Queue<ChessBoardCell> queue = new ArrayDeque<>();
-        queue.add(startChessBoardCell);
+        Queue<Cell> queue = new ArrayDeque<>();
+        queue.add(startCell);
 
         // выполняем пока очередь не пуста
         while (!queue.isEmpty()) {
-            ChessBoardCell cell = queue.poll();
+            Cell cell = queue.poll();
             // если пункт назначения достигнут, вернуть расстояние
-            if (cell.isCurrentPosition(endChessBoardCell)) {
+            if (cell.isCurrentPosition(endCell)) {
                 return cell.getDist();
             }
 
@@ -46,9 +46,9 @@ public class BoardPathFinder<T extends Chessman> {
                 // Получить новую действительную позицию коня
                 // из текущей позиции на шахматной доске
                 // и поставить ее в очередь на +1 расстояние
-                ChessBoardCell currentChessBoardCell = t.getNextCellFrom(cell, i);
-                if (board.contains(currentChessBoardCell)) {
-                    queue.add(currentChessBoardCell);
+                Cell currentCell = t.getNextCellFrom(cell, i);
+                if (board.contains(currentCell)) {
+                    queue.add(currentCell);
                 }
             }
         }

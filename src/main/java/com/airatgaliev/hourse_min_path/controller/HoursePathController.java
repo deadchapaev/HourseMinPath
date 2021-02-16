@@ -1,7 +1,7 @@
 package com.airatgaliev.hourse_min_path.controller;
 
 import static com.airatgaliev.hourse_min_path.controller.CellUtils.parseCell;
-import com.airatgaliev.hourse_min_path.model.ChessBoardCell;
+import com.airatgaliev.hourse_min_path.model.Cell;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,10 +55,10 @@ public class HoursePathController {
     private int getMinPath(int width, int height, String start, String end) throws NumberFormatException {
         Board board = new Board(width, height);
         
-        ChessBoardCell startChessBoardCell = parseCell(start);
-        ChessBoardCell endChessBoardCell = parseCell(end);
+        Cell startCell = parseCell(start);
+        Cell endCell = parseCell(end);
         
-        return bfs.findMinPath(board, startChessBoardCell, endChessBoardCell, chessman);
+        return bfs.findMinPath(board, startCell, endCell, chessman);
     }
 
 

@@ -1,10 +1,10 @@
 package com.airatgaliev.hourse_min_path.model.interfaces;
 
-import com.airatgaliev.hourse_min_path.model.ChessBoardCell;
+import com.airatgaliev.hourse_min_path.model.Cell;
 
 public interface Chessman {
 
-    ChessBoardCell getNextCellFrom(ChessBoardCell from, int possibleMovement);
+    Cell getNextCellFrom(Cell from, int possibleMovement);
 
     int getPossibleMovementCnt();
 }
