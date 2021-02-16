@@ -60,9 +60,6 @@ public class BFS<T extends Chessman> {
     }
 
     public boolean isValidCell(int x, int y, int width, int height) {
-        if (x >= 0 && x < width && y >= 0 && y < height) {
-            return true;
-        }
-        return false;
+        return x >= 0 && x < width && y >= 0 && y < height;
     }
 }
