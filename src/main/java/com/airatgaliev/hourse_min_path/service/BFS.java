@@ -54,9 +54,9 @@ public class BFS<T extends Chessman> {
                 // и поставить ее в очередь на +1 расстояние
                 int x1 = x + t.getDx(i);
                 int y1 = y + t.getDy(i);
-                ChessBoardCell currentChessBoardCell = new ChessBoardCell(x1, y1);
+                ChessBoardCell currentChessBoardCell = new ChessBoardCell(x1, y1, dist + 1);
                 if (board.contains(currentChessBoardCell)) {
-                    queue.add(new ChessBoardCell(x1, y1, dist + 1));
+                    queue.add(currentChessBoardCell);
                 }
             }
         }
