@@ -7,8 +7,8 @@ import com.airatgaliev.hourse_min_path.model.interfaces.Chessman;
 @Component
 public class Hourse implements Chessman {
 
-    private int dx[] = {-2, -1, 1, 2, -2, -1, 1, 2};
-    private int dy[] = {-1, -2, -2, -1, 1, 2, 2, 1};
+    private final int dx[] = {-2, -1, 1, 2, -2, -1, 1, 2};
+    private final int dy[] = {-1, -2, -2, -1, 1, 2, 2, 1};
 
     @Override
     public ChessBoardCell getNextCellFrom(ChessBoardCell from, int possibleMovement) {
