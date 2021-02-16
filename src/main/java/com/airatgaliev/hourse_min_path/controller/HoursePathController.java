@@ -46,7 +46,7 @@ public class HoursePathController {
     private int getMinPathCaught(String start, String end, int width, int height) throws NumberFormatException {
         try {
             return getMinPath(width, height, start, end);
-        } catch (NullPointerException e) {
+        } catch (NullPointerException | NumberFormatException e) {
             return -1;
         }
     }
@@ -68,11 +68,10 @@ public class HoursePathController {
 
     public int NumberFromExcelColumn(String column) {
         int retVal = 0;
-        String col = column;
-        for (int iChar = col.length() - 1; iChar >= 0; iChar--) {
-            char colPiece = col.charAt(iChar);
+        for (int iChar = column.length() - 1; iChar >= 0; iChar--) {
+            char colPiece = column.charAt(iChar);
             int colNum = colPiece - 64;
-            retVal = retVal + colNum * (int) Math.pow(26, col.length() - (iChar + 1));
+            retVal = retVal + colNum * (int) Math.pow(26, column.length() - (iChar + 1));
         }
         return retVal - 1;
     }
