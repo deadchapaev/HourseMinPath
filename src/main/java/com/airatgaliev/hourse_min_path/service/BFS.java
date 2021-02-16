@@ -21,41 +21,40 @@ public class BFS<T extends Chessman> {
         Queue<ChessBoardCell> queue = new ArrayDeque<ChessBoardCell>();
         ChessBoardCell startCell = new ChessBoardCell(startX, startY);
         queue.add(startCell);
-        if (isValidCell(startX, startY, width, height) && isValidCell(endX, endY, width, height)) {
-            // выполняем пока очередь не пуста
-            while (!queue.isEmpty()) {
-                ChessBoardCell cell = queue.poll();
-                int x = cell.getX();
-                int y = cell.getY();
-                int dist = cell.getDist();
-                // если пункт назначения достигнут, вернуть расстояние
-                if (x == endX && y == endY) {
-                    return dist;
-                }
-
-                // Пропустить, если местоположение посещалось раньше
-                if (!visited.contains(cell)) {
-                    // пометить текущий узел как посещенный
-                    visited.add(cell);
-
-                    // проверяем все 8 возможных движений коня
-                    // и вставляем в очередь каждое действующее движение
-                    for (int i = 0; i < 8; ++i) {
-                        // Получить новую действительную позицию коня
-                        // из текущей позиции на шахматной доске
-                        // и поставить ее в очередь на +1 расстояние
-                        int x1 = x + t.getDx(i);
-                        int y1 = y + t.getDy(i);
-                        if (isValidCell(x1, y1, width, height)) {
-                            queue.add(new ChessBoardCell(x1, y1, dist + 1));
-                        }
+        if (!isValidCell(startX, startY, width, height) || !isValidCell(endX, endY, width, height)) {
+            return -1;
+        }
+        // выполняем пока очередь не пуста
+        while (!queue.isEmpty()) {
+            ChessBoardCell cell = queue.poll();
+            int x = cell.getX();
+            int y = cell.getY();
+            int dist = cell.getDist();
+            // если пункт назначения достигнут, вернуть расстояние
+            if (x == endX && y == endY) {
+                return dist;
+            }
+            
+            // Пропустить, если местоположение посещалось раньше
+            if (!visited.contains(cell)) {
+                // пометить текущий узел как посещенный
+                visited.add(cell);
+                
+                // проверяем все 8 возможных движений коня
+                // и вставляем в очередь каждое действующее движение
+                for (int i = 0; i < 8; ++i) {
+                    // Получить новую действительную позицию коня
+                    // из текущей позиции на шахматной доске
+                    // и поставить ее в очередь на +1 расстояние
+                    int x1 = x + t.getDx(i);
+                    int y1 = y + t.getDy(i);
+                    if (isValidCell(x1, y1, width, height)) {
+                        queue.add(new ChessBoardCell(x1, y1, dist + 1));
                     }
                 }
             }
-            return -1;
-        } else {
-            return -1;
         }
+        return -1;
 
     }
 
