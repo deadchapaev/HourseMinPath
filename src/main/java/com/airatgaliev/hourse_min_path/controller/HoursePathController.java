@@ -41,7 +41,7 @@ public class HoursePathController {
         Count count = new Count(String.format(TEMPLATE, minPath));
         count.add(linkTo(methodOn(HoursePathController.class).count(width, height, start.toUpperCase(), end.toUpperCase())).withSelfRel());
 
-        return new ResponseEntity<>(count, HttpStatus.OK);
+        return ResponseEntity.ok(count);
 
     }
 
@@ -55,12 +55,11 @@ public class HoursePathController {
 
     private int getMinPath(int width, int height, String start, String end) throws NumberFormatException {
         Board board = new Board(width, height);
-        
+
         Cell startCell = parseCell(start);
         Cell endCell = parseCell(end);
-        
+
         return bfs.findMinPath(board, startCell, endCell, chessman);
     }
-
 
 }
