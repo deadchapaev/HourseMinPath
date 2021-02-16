@@ -16,7 +16,7 @@ public class BFS<T extends Chessman> {
     public int getMinPath(int width, int height, int startX, int startY, int endX, int endY, T t) {
         Board board = new Board(width, height);
         ChessBoardCell startChessBoardCell = new ChessBoardCell(startX, startY);
-        ChessBoardCell endChessBoardCell = new ChessBoardCell(startX, startY);
+        ChessBoardCell endChessBoardCell = new ChessBoardCell(endX, endY);
         if (!board.contains(startChessBoardCell) || board.contains(endChessBoardCell)) {
             return -1;
         }
