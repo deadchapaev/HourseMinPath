@@ -11,7 +11,7 @@ import com.airatgaliev.hourse_min_path.model.ChessBoardCell;
 import com.airatgaliev.hourse_min_path.model.interfaces.Chessman;
 
 @Component
-public class BFS<T extends Chessman> {
+public class BoardPathFinder<T extends Chessman> {
 
     public int getMinPath(Board board, ChessBoardCell startChessBoardCell, ChessBoardCell endChessBoardCell, T t) {
 

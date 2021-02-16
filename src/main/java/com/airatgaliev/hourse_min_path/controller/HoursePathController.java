@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.airatgaliev.hourse_min_path.model.Count;
 import com.airatgaliev.hourse_min_path.model.Hourse;
 import com.airatgaliev.hourse_min_path.model.interfaces.Chessman;
-import com.airatgaliev.hourse_min_path.service.BFS;
+import com.airatgaliev.hourse_min_path.service.BoardPathFinder;
 import com.airatgaliev.hourse_min_path.service.Board;
 
 @RestController
@@ -26,7 +26,7 @@ public class HoursePathController {
     private static final String TEMPLATE = "%d";
 
     @Autowired
-    private BFS<Chessman> bfs;
+    private BoardPathFinder<Chessman> bfs;
 
     @Autowired
     private Chessman chessman;
