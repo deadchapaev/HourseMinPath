@@ -15,6 +15,8 @@ public class BFS<T extends Chessman> {
 
     public int getMinPath(int width, int height, int startX, int startY, int endX, int endY, T t) {
         Board board = new Board(width, height);
+        ChessBoardCell startChessBoardCell = new ChessBoardCell(startX, startY);
+        ChessBoardCell endChessBoardCell = new ChessBoardCell(startX, startY);
         // проверка, посещена ли ячейка матрицы раньше или нет
         Set<ChessBoardCell> visited = new HashSet<>();
 
@@ -22,7 +24,8 @@ public class BFS<T extends Chessman> {
         Queue<ChessBoardCell> queue = new ArrayDeque<>();
         ChessBoardCell startCell = new ChessBoardCell(startX, startY);
         queue.add(startCell);
-        if (!isValidCell(startX, startY, width, height) || !isValidCell(endX, endY, width, height)) {
+
+        if (!board.isValidCell(startChessBoardCell) || board.isValidCell(endChessBoardCell)) {
             return -1;
         }
         // выполняем пока очередь не пуста
@@ -35,12 +38,12 @@ public class BFS<T extends Chessman> {
             if (x == endX && y == endY) {
                 return dist;
             }
-            
+
             // Пропустить, если местоположение посещалось раньше
             if (!visited.contains(cell)) {
                 // пометить текущий узел как посещенный
                 visited.add(cell);
-                
+
                 // проверяем все 8 возможных движений коня
                 // и вставляем в очередь каждое действующее движение
                 for (int i = 0; i < 8; ++i) {
