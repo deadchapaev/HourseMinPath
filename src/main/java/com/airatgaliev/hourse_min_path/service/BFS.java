@@ -15,10 +15,10 @@ public class BFS<T extends Chessman> {
 
     public int getMinPath(int width, int height, int startX, int startY, int endX, int endY, T t) {
         // проверка, посещена ли ячейка матрицы раньше или нет
-        Set<ChessBoardCell> visited = new HashSet<ChessBoardCell>();
+        Set<ChessBoardCell> visited = new HashSet<>();
 
         // создать очередь и поставить в очередь первый узел
-        Queue<ChessBoardCell> queue = new ArrayDeque<ChessBoardCell>();
+        Queue<ChessBoardCell> queue = new ArrayDeque<>();
         ChessBoardCell startCell = new ChessBoardCell(startX, startY);
         queue.add(startCell);
         if (!isValidCell(startX, startY, width, height) || !isValidCell(endX, endY, width, height)) {
