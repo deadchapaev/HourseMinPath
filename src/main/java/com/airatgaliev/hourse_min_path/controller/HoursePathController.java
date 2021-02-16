@@ -35,6 +35,15 @@ public class HoursePathController {
             @RequestParam(defaultValue = "8") int height,
             @RequestParam(defaultValue = "A1") String start,
             @RequestParam(defaultValue = "H8") String end) {
+        int minPath = getMinPath(start, end, width, height);
+        Count count = new Count(String.format(TEMPLATE, minPath));
+        count.add(linkTo(methodOn(HoursePathController.class).count(width, height, start.toUpperCase(), end.toUpperCase())).withSelfRel());
+
+        return new ResponseEntity<>(count, HttpStatus.OK);
+
+    }
+
+    private int getMinPath(String start, String end, int width, int height) throws NumberFormatException {
         int minPath;
         try {
             int startX = NumberFromExcelColumn(start.replaceAll("[0-9]", ""));
@@ -50,11 +59,7 @@ public class HoursePathController {
         } catch (NullPointerException e) {
             minPath = -1;
         }
-        Count count = new Count(String.format(TEMPLATE, minPath));
-        count.add(linkTo(methodOn(HoursePathController.class).count(width, height, start.toUpperCase(), end.toUpperCase())).withSelfRel());
-
-        return new ResponseEntity<>(count, HttpStatus.OK);
-
+        return minPath;
     }
 
     public int NumberFromExcelColumn(String column) {
