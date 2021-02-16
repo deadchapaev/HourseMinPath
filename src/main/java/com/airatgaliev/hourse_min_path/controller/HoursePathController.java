@@ -35,12 +35,12 @@ public class HoursePathController {
             @RequestParam(defaultValue = "8") int height,
             @RequestParam(defaultValue = "A1") String start,
             @RequestParam(defaultValue = "H8") String end) {
-        int startX, startY, endX, endY, minPath;
+        int minPath;
         try {
-            startX = NumberFromExcelColumn(start.replaceAll("[0-9]", ""));
-            startY = Integer.parseInt(start.toUpperCase().replaceAll("[A-Z]", "")) - 1;
-            endX = NumberFromExcelColumn(end.replaceAll("[0-9]", ""));
-            endY = Integer.parseInt(end.toUpperCase().replaceAll("[A-Z]", "")) - 1;
+            int startX = NumberFromExcelColumn(start.replaceAll("[0-9]", ""));
+            int startY = Integer.parseInt(start.toUpperCase().replaceAll("[A-Z]", "")) - 1;
+            int endX = NumberFromExcelColumn(end.replaceAll("[0-9]", ""));
+            int endY = Integer.parseInt(end.toUpperCase().replaceAll("[A-Z]", "")) - 1;
 
             Board board = new Board(width, height);
             ChessBoardCell startChessBoardCell = new ChessBoardCell(startX, startY);
