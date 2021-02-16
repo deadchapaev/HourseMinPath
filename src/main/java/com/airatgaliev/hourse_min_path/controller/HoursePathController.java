@@ -18,6 +18,7 @@ import com.airatgaliev.hourse_min_path.model.Hourse;
 import com.airatgaliev.hourse_min_path.model.interfaces.Chessman;
 import com.airatgaliev.hourse_min_path.service.BoardPathFinder;
 import com.airatgaliev.hourse_min_path.service.Board;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 @RequestMapping(value = "/hourse/rest")
@@ -31,7 +32,7 @@ public class HoursePathController {
     @Autowired
     private Chessman chessman;
 
-    @RequestMapping(value = "/count", method = RequestMethod.GET)
+    @GetMapping(value = "/count")
     public HttpEntity<Count> count(@RequestParam(defaultValue = "8") int width,
             @RequestParam(defaultValue = "8") int height,
             @RequestParam(defaultValue = "A1") String start,
