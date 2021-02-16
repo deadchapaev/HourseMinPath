@@ -44,16 +44,13 @@ public class BFS<T extends Chessman> {
             visited.add(cell);
             // проверяем все 8 возможных движений коня
             // и вставляем в очередь каждое действующее движение
-            int x = cell.getX();
-            int y = cell.getY();
-            int dist = cell.getDist();
             for (int i = 0; i < 8; ++i) {
                 // Получить новую действительную позицию коня
                 // из текущей позиции на шахматной доске
                 // и поставить ее в очередь на +1 расстояние
-                int x1 = x + t.getDx(i);
-                int y1 = y + t.getDy(i);
-                ChessBoardCell currentChessBoardCell = new ChessBoardCell(x1, y1, dist + 1);
+                int x1 = cell.getX() + t.getDx(i);
+                int y1 = cell.getY() + t.getDy(i);
+                ChessBoardCell currentChessBoardCell = new ChessBoardCell(x1, y1, cell.getDist() + 1);
                 if (board.contains(currentChessBoardCell)) {
                     queue.add(currentChessBoardCell);
                 }
