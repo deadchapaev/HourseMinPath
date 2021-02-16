@@ -46,13 +46,14 @@ public class HoursePathController {
     private int getMinPath(String start, String end, int width, int height) throws NumberFormatException {
         int minPath;
         try {
+            Board board = new Board(width, height);
+            
             int startX = NumberFromExcelColumn(start.replaceAll("[0-9]", ""));
             int startY = Integer.parseInt(start.toUpperCase().replaceAll("[A-Z]", "")) - 1;
+            ChessBoardCell startChessBoardCell = new ChessBoardCell(startX, startY);
+            
             int endX = NumberFromExcelColumn(end.replaceAll("[0-9]", ""));
             int endY = Integer.parseInt(end.toUpperCase().replaceAll("[A-Z]", "")) - 1;
-
-            Board board = new Board(width, height);
-            ChessBoardCell startChessBoardCell = new ChessBoardCell(startX, startY);
             ChessBoardCell endChessBoardCell = new ChessBoardCell(endX, endY);
 
             minPath = bfs.getMinPath(board, startChessBoardCell, endChessBoardCell, chessman);
