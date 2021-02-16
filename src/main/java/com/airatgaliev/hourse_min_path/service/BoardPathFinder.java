@@ -13,7 +13,7 @@ import com.airatgaliev.hourse_min_path.model.interfaces.Chessman;
 @Component
 public class BoardPathFinder<T extends Chessman> {
 
-    public int getMinPath(Board board, ChessBoardCell startChessBoardCell, ChessBoardCell endChessBoardCell, T t) {
+    public int findMinPath(Board board, ChessBoardCell startChessBoardCell, ChessBoardCell endChessBoardCell, T t) {
 
         if (!board.contains(startChessBoardCell) || board.contains(endChessBoardCell)) {
             return -1;

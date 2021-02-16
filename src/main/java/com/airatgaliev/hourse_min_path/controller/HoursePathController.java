@@ -58,7 +58,7 @@ public class HoursePathController {
         ChessBoardCell startChessBoardCell = parseCell(start);
         ChessBoardCell endChessBoardCell = parseCell(end);
         
-        return bfs.getMinPath(board, startChessBoardCell, endChessBoardCell, chessman);
+        return bfs.findMinPath(board, startChessBoardCell, endChessBoardCell, chessman);
     }
 
 
