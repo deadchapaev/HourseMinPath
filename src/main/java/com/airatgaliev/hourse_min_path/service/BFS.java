@@ -35,7 +35,7 @@ public class BFS<T extends Chessman> {
             int y = cell.getY();
             int dist = cell.getDist();
             // если пункт назначения достигнут, вернуть расстояние
-            if (x == endX && y == endY) {
+            if (cell.isCurrentPosition(endChessBoardCell)) {
                 return dist;
             }
 
