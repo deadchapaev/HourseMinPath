@@ -31,10 +31,10 @@ public class HoursePathController {
     private Hourse hourse;
 
     @RequestMapping(value = "/count", method = RequestMethod.GET)
-    public HttpEntity<Count> count(@RequestParam(value = "width", defaultValue = "8") int width,
-            @RequestParam(value = "height", defaultValue = "8") int height,
-            @RequestParam(value = "start", defaultValue = "A1") String start,
-            @RequestParam(value = "end", defaultValue = "H8") String end) {
+    public HttpEntity<Count> count(@RequestParam(defaultValue = "8") int width,
+            @RequestParam(defaultValue = "8") int height,
+            @RequestParam(defaultValue = "A1") String start,
+            @RequestParam(defaultValue = "H8") String end) {
         int startX, startY, endX, endY, minPath;
         try {
             startX = NumberFromExcelColumn(start.replaceAll("[0-9]", ""));
