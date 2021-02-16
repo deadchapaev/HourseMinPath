@@ -15,7 +15,7 @@ public class Board {
         this.height = height;
     }
 
-    public boolean isValidCell(ChessBoardCell chessBoardCell) {
+    public boolean contains(ChessBoardCell chessBoardCell) {
         return chessBoardCell.getX() >= 0 && chessBoardCell.getX() < width
                 && chessBoardCell.getY() >= 0 && chessBoardCell.getY() < height;
     }

@@ -17,6 +17,10 @@ public class BFS<T extends Chessman> {
         Board board = new Board(width, height);
         ChessBoardCell startChessBoardCell = new ChessBoardCell(startX, startY);
         ChessBoardCell endChessBoardCell = new ChessBoardCell(startX, startY);
+        if (!board.contains(startChessBoardCell) || board.contains(endChessBoardCell)) {
+            return -1;
+        }
+
         // проверка, посещена ли ячейка матрицы раньше или нет
         Set<ChessBoardCell> visited = new HashSet<>();
 
@@ -25,9 +29,6 @@ public class BFS<T extends Chessman> {
         ChessBoardCell startCell = new ChessBoardCell(startX, startY);
         queue.add(startCell);
 
-        if (!board.isValidCell(startChessBoardCell) || board.isValidCell(endChessBoardCell)) {
-            return -1;
-        }
         // выполняем пока очередь не пуста
         while (!queue.isEmpty()) {
             ChessBoardCell cell = queue.poll();
