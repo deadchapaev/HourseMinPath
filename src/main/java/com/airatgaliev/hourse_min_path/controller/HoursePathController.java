@@ -28,7 +28,7 @@ public class HoursePathController {
     private BFS<Chessman> bfs;
 
     @Autowired
-    private Hourse hourse;
+    private Chessman chessman;
 
     @RequestMapping(value = "/count", method = RequestMethod.GET)
     public HttpEntity<Count> count(@RequestParam(defaultValue = "8") int width,
@@ -46,7 +46,7 @@ public class HoursePathController {
             ChessBoardCell startChessBoardCell = new ChessBoardCell(startX, startY);
             ChessBoardCell endChessBoardCell = new ChessBoardCell(endX, endY);
 
-            minPath = bfs.getMinPath(board, startChessBoardCell, endChessBoardCell, hourse);
+            minPath = bfs.getMinPath(board, startChessBoardCell, endChessBoardCell, chessman);
         } catch (NullPointerException e) {
             minPath = -1;
         }
