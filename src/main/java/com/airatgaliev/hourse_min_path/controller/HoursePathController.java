@@ -35,7 +35,7 @@ public class HoursePathController {
             @RequestParam(defaultValue = "8") int height,
             @RequestParam(defaultValue = "A1") String start,
             @RequestParam(defaultValue = "H8") String end) {
-        int minPath = getMinPath(start, end, width, height);
+        int minPath = getMinPathCaught(start, end, width, height);
         Count count = new Count(String.format(TEMPLATE, minPath));
         count.add(linkTo(methodOn(HoursePathController.class).count(width, height, start.toUpperCase(), end.toUpperCase())).withSelfRel());
 
@@ -43,19 +43,21 @@ public class HoursePathController {
 
     }
 
-    private int getMinPath(String start, String end, int width, int height) throws NumberFormatException {
-        int minPath;
+    private int getMinPathCaught(String start, String end, int width, int height) throws NumberFormatException {
         try {
-            Board board = new Board(width, height);
-
-            ChessBoardCell startChessBoardCell = parseCell(start);
-            ChessBoardCell endChessBoardCell = parseCell(end);
-
-            minPath = bfs.getMinPath(board, startChessBoardCell, endChessBoardCell, chessman);
+            return getMinPath(width, height, start, end);
         } catch (NullPointerException e) {
-            minPath = -1;
+            return -1;
         }
-        return minPath;
+    }
+
+    private int getMinPath(int width, int height, String start, String end) throws NumberFormatException {
+        Board board = new Board(width, height);
+        
+        ChessBoardCell startChessBoardCell = parseCell(start);
+        ChessBoardCell endChessBoardCell = parseCell(end);
+        
+        return bfs.getMinPath(board, startChessBoardCell, endChessBoardCell, chessman);
     }
 
     private ChessBoardCell parseCell(String position) throws NumberFormatException {
