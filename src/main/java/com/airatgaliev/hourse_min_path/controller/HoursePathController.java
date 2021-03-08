@@ -46,7 +46,7 @@ public class HoursePathController {
     private int getMinPath(String start, String end, int width, int height) throws NumberFormatException {
         int minPath;
         try {
-            //TODO:надо бы переписать на Cell
+            //TODO:вынесем билдеры Cell
             int startX = NumberFromExcelColumn(start.replaceAll("[0-9]", ""));
             int startY = Integer.parseInt(start.toUpperCase().replaceAll("[A-Z]", "")) - 1;
             Cell startCell = new Cell(startX, startY);
