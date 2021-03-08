@@ -36,6 +36,7 @@ public class HoursePathController {
     }
 
     @GetMapping(path = "/count")
+    //TODO:value в RequestParam избыточно
     public HttpEntity<Count> count(@RequestParam(value = "width", defaultValue = "8") int width,
             @RequestParam(value = "height", defaultValue = "8") int height,
             @RequestParam(value = "start", defaultValue = "A1") String start,
