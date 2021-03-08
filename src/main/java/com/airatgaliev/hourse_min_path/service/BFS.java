@@ -16,6 +16,7 @@ public class BFS<T extends Chessman> {
 
     public int getMinPath(int width, int height, int startX, int startY, int endX, int endY, T t) {
         Board board = new Board(width, height);
+        //TODO:слишком многословное название для класса. Из контекста и так ясно.
         ChessBoardCell startChessBoardCell = new ChessBoardCell(startX, startY);
         ChessBoardCell endChessBoardCell = new ChessBoardCell(endX, endY);
         return getMinPath(startChessBoardCell, endChessBoardCell, board, t);
