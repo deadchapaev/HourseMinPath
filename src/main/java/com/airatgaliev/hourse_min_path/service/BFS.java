@@ -53,10 +53,9 @@ public class BFS<T extends Chessman> {
                     // Получить новую действительную позицию коня
                     // из текущей позиции на шахматной доске
                     // и поставить ее в очередь на +1 расстояние
-                    //TODO: по сути, nextCell и Cell внутри условия это одинаковые ячейки
-                    Cell nextCell = new Cell(cell.getX() + t.getDx(i), cell.getY() + t.getDy(i));
+                    Cell nextCell = new Cell(cell.getX() + t.getDx(i), cell.getY() + t.getDy(i), cell.getDist() + 1);
                     if (board.contains(nextCell)) {
-                        queue.add(new Cell(nextCell.getX(), nextCell.getY(), cell.getDist() + 1));
+                        queue.add(nextCell);
                     }
                 }
             }
