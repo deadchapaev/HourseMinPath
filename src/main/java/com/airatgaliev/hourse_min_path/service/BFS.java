@@ -23,17 +23,15 @@ public class BFS<T extends Chessman> {
     }
 
     private int getMinPath(Cell startCell, Cell endCell, Board board, T t) {
-
-        // проверка, посещена ли ячейка матрицы раньше или нет
-        Set<Cell> visited = new HashSet<Cell>();
-
-        // создать очередь и поставить в очередь первый узел
-        Queue<Cell> queue = new ArrayDeque<Cell>();
-        queue.add(startCell);
-        //TODO:валидация должна быть в самом начале
         if (!board.contains(startCell) || !board.contains(endCell)) {
             return -1;
         }
+
+        // проверка, посещена ли ячейка матрицы раньше или нет
+        Set<Cell> visited = new HashSet<Cell>();
+        // создать очередь и поставить в очередь первый узел
+        Queue<Cell> queue = new ArrayDeque<Cell>();
+        queue.add(startCell);
 
         // выполняем пока очередь не пуста
         while (!queue.isEmpty()) {
