@@ -52,6 +52,7 @@ public class HoursePathController {
             int endX = NumberFromExcelColumn(end.replaceAll("[0-9]", ""));
             int endY = Integer.parseInt(end.toUpperCase().replaceAll("[A-Z]", "")) - 1;
             Cell endCell = new Cell(endX, endY);
+            //TODO:откроем перегруженный приватный метод
             minPath = bfs.getMinPath(width, height, startX, startY, endX, endY, hourse);
         } catch (NullPointerException e) {
             minPath = -1;
