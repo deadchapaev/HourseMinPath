@@ -16,12 +16,13 @@ public class BFS<T extends Chessman> {
 
     public int getMinPath(int width, int height, int startX, int startY, int endX, int endY, T t) {
         Board board = new Board(width, height);
-        return getMinPath(startX, startY, board, endX, endY, t);
-    }
-
-    private int getMinPath(int startX, int startY, Board board, int endX, int endY, T t) {
         ChessBoardCell startChessBoardCell = new ChessBoardCell(startX, startY);
         ChessBoardCell endChessBoardCell = new ChessBoardCell(endX, endY);
+        return getMinPath(startChessBoardCell, endChessBoardCell, board, t);
+    }
+
+    private int getMinPath(ChessBoardCell startChessBoardCell, ChessBoardCell endChessBoardCell, Board board, T t) {
+
         // проверка, посещена ли ячейка матрицы раньше или нет
         Set<ChessBoardCell> visited = new HashSet<ChessBoardCell>();
 
