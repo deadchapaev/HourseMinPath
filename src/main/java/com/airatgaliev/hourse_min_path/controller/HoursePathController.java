@@ -42,6 +42,7 @@ public class HoursePathController {
             @RequestParam(defaultValue = "H8") String end) {
         int minPath = getMinPathCaught(start, end, width, height);
         Count count = new Count(String.format(TEMPLATE, minPath));
+        //TODO:чёрная магия
         count.add(linkTo(methodOn(HoursePathController.class).count(width, height, start.toUpperCase(), end.toUpperCase())).withSelfRel());
 
         return new ResponseEntity<>(count, HttpStatus.OK);
