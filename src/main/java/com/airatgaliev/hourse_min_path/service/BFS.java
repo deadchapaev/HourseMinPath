@@ -30,6 +30,7 @@ public class BFS<T extends Chessman> {
         // создать очередь и поставить в очередь первый узел
         Queue<Cell> queue = new ArrayDeque<Cell>();
         queue.add(startCell);
+        //TODO:валидация должна быть в самом начале
         if (!board.contains(startCell) || !board.contains(endCell)) {
             return -1;
         }
