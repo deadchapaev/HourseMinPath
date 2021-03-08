@@ -44,9 +44,7 @@ public class HoursePathController {
         int minPath = getMinPathCaught(start, end, width, height);
         Count count = new Count(String.format(TEMPLATE, minPath));
         count.add(getLink(width, height, start, end));
-        //TODO:пользуемся билдерами ResponseEntity
-        return new ResponseEntity<>(count, HttpStatus.OK);
-
+        return ResponseEntity.ok().body(count);
     }
 
     private static Link getLink(int width, int height, String start, String end) {
