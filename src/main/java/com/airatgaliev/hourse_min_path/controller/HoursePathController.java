@@ -46,19 +46,22 @@ public class HoursePathController {
     private int getMinPath(String start, String end, int width, int height) throws NumberFormatException {
         int minPath;
         try {
-            //TODO:вынесем билдеры Cell
-            int startX = NumberFromExcelColumn(start.replaceAll("[0-9]", ""));
-            int startY = Integer.parseInt(start.toUpperCase().replaceAll("[A-Z]", "")) - 1;
-            Cell startCell = new Cell(startX, startY);
-            int endX = NumberFromExcelColumn(end.replaceAll("[0-9]", ""));
-            int endY = Integer.parseInt(end.toUpperCase().replaceAll("[A-Z]", "")) - 1;
-            Cell endCell = new Cell(endX, endY);
+            Cell startCell = buildCell(start);
+            Cell endCell = buildCell(end);
             Board board = new Board(width, height);
             minPath = bfs.getMinPath(startCell, endCell, board, hourse);
         } catch (NullPointerException e) {
             minPath = -1;
         }
         return minPath;
+    }
+
+    private Cell buildCell(String start) throws NumberFormatException {
+        //TODO:вынесем билдеры Cell
+        int startX = NumberFromExcelColumn(start.replaceAll("[0-9]", ""));
+        int startY = Integer.parseInt(start.toUpperCase().replaceAll("[A-Z]", "")) - 1;
+        Cell startCell = new Cell(startX, startY);
+        return startCell;
     }
 
     public int NumberFromExcelColumn(String column) {
