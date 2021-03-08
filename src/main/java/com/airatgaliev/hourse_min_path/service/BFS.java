@@ -37,9 +37,6 @@ public class BFS<T extends Chessman> {
         // выполняем пока очередь не пуста
         while (!queue.isEmpty()) {
             Cell cell = queue.poll();
-            //TODO:эти локалы только отвлекают
-            int x = cell.getX();
-            int y = cell.getY();
             // если пункт назначения достигнут, вернуть расстояние
             if (cell.equals(endCell)) {
                 return cell.getDist();
@@ -56,7 +53,7 @@ public class BFS<T extends Chessman> {
                     // Получить новую действительную позицию коня
                     // из текущей позиции на шахматной доске
                     // и поставить ее в очередь на +1 расстояние
-                    Cell nextCell = new Cell(x + t.getDx(i), y + t.getDy(i));
+                    Cell nextCell = new Cell(cell.getX() + t.getDx(i), cell.getY() + t.getDy(i));
                     if (board.contains(nextCell)) {
                         queue.add(new Cell(nextCell.getX(), nextCell.getY(), cell.getDist() + 1));
                     }
