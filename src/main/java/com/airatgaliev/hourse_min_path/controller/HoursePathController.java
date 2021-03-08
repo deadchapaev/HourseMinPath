@@ -24,6 +24,7 @@ public class HoursePathController {
 
     private static final String TEMPLATE = "%d";
 
+    //TODO:final, constructor, etc...
     @Autowired
     private BFS<Chessman> bfs;
 
