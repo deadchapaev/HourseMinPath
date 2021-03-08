@@ -1,5 +1,6 @@
 package com.airatgaliev.hourse_min_path.controller;
 
+import com.airatgaliev.hourse_min_path.model.Board;
 import com.airatgaliev.hourse_min_path.model.Cell;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
 
@@ -52,8 +53,8 @@ public class HoursePathController {
             int endX = NumberFromExcelColumn(end.replaceAll("[0-9]", ""));
             int endY = Integer.parseInt(end.toUpperCase().replaceAll("[A-Z]", "")) - 1;
             Cell endCell = new Cell(endX, endY);
-            //TODO:откроем перегруженный приватный метод
-            minPath = bfs.getMinPath(width, height, startX, startY, endX, endY, hourse);
+            Board board = new Board(width, height);
+            minPath = bfs.getMinPath(startCell, endCell, board, hourse);
         } catch (NullPointerException e) {
             minPath = -1;
         }

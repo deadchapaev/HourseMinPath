@@ -21,7 +21,7 @@ public class BFS<T extends Chessman> {
         return getMinPath(startCell, endCell, board, t);
     }
 
-    private int getMinPath(Cell startCell, Cell endCell, Board board, T t) {
+    public int getMinPath(Cell startCell, Cell endCell, Board board, T t) {
         if (!board.contains(startCell) || !board.contains(endCell)) {
             return -1;
         }
