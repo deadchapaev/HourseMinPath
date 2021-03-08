@@ -60,6 +60,7 @@ public class BFS<T extends Chessman> {
     }
 
     public boolean isValidCell(int x, int y, int width, int height) {
+        //TODO:условие и так возвращает boolean
         if (x >= 0 && x < width && y >= 0 && y < height) {
             return true;
         }
