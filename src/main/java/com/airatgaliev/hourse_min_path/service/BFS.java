@@ -19,8 +19,9 @@ public class BFS<T extends Chessman> {
         return getMinPath(startX, startY, board, endX, endY, t);
     }
 
-    //TODO: сигнатура всё равно большая, надо переделать на CheccBoardCell
     private int getMinPath(int startX, int startY, Board board, int endX, int endY, T t) {
+        ChessBoardCell startChessBoardCell = new ChessBoardCell(startX, startY);
+        ChessBoardCell endChessBoardCell = new ChessBoardCell(endX, endY);
         // проверка, посещена ли ячейка матрицы раньше или нет
         Set<ChessBoardCell> visited = new HashSet<ChessBoardCell>();
 
@@ -28,7 +29,7 @@ public class BFS<T extends Chessman> {
         Queue<ChessBoardCell> queue = new ArrayDeque<ChessBoardCell>();
         ChessBoardCell startCell = new ChessBoardCell(startX, startY);
         queue.add(startCell);
-        if (!isValidCell(startX, startY, board) || !isValidCell(endX, endY, board)) {
+        if (!isValidCell(startChessBoardCell, board) || !isValidCell(endChessBoardCell, board)) {
             return -1;
         }
 
@@ -39,7 +40,7 @@ public class BFS<T extends Chessman> {
             int y = cell.getY();
             int dist = cell.getDist();
             // если пункт назначения достигнут, вернуть расстояние
-            if (x == endX && y == endY) {
+            if (x == endChessBoardCell.getX() && y == endChessBoardCell.getX()) {
                 return dist;
             }
 
@@ -54,10 +55,9 @@ public class BFS<T extends Chessman> {
                     // Получить новую действительную позицию коня
                     // из текущей позиции на шахматной доске
                     // и поставить ее в очередь на +1 расстояние
-                    int x1 = x + t.getDx(i);
-                    int y1 = y + t.getDy(i);
-                    if (isValidCell(x1, y1, board)) {
-                        queue.add(new ChessBoardCell(x1, y1, dist + 1));
+                    ChessBoardCell chessBoardCell = new ChessBoardCell(x + t.getDx(i), y + t.getDy(i));
+                    if (isValidCell(chessBoardCell, board)) {
+                        queue.add(new ChessBoardCell(chessBoardCell.getX(), chessBoardCell.getY(), dist + 1));
                     }
                 }
             }
@@ -65,7 +65,8 @@ public class BFS<T extends Chessman> {
         return -1;
     }
 
-    public boolean isValidCell(int x, int y, Board board) {
-        return x >= 0 && x < board.getWidth() && y >= 0 && y < board.getHeight();
+    public boolean isValidCell(ChessBoardCell chessBoardCell, Board board) {
+        return chessBoardCell.getX() >= 0 && chessBoardCell.getX() < board.getWidth()
+                && chessBoardCell.getY() >= 0 && chessBoardCell.getY() < board.getHeight();
     }
 }
