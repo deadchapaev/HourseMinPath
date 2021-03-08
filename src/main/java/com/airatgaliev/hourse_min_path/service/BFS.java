@@ -1,5 +1,6 @@
 package com.airatgaliev.hourse_min_path.service;
 
+import com.airatgaliev.hourse_min_path.model.Board;
 import java.util.ArrayDeque;
 import java.util.HashSet;
 import java.util.Queue;
@@ -13,8 +14,8 @@ import com.airatgaliev.hourse_min_path.model.interfaces.Chessman;
 @Component
 public class BFS<T extends Chessman> {
 
-    //TODO:неудобная сигнатура метода (вынесем Board)
     public int getMinPath(int width, int height, int startX, int startY, int endX, int endY, T t) {
+        Board board = new Board(width, height);
         // проверка, посещена ли ячейка матрицы раньше или нет
         Set<ChessBoardCell> visited = new HashSet<ChessBoardCell>();
 
@@ -22,7 +23,7 @@ public class BFS<T extends Chessman> {
         Queue<ChessBoardCell> queue = new ArrayDeque<ChessBoardCell>();
         ChessBoardCell startCell = new ChessBoardCell(startX, startY);
         queue.add(startCell);
-        if (!isValidCell(startX, startY, width, height) || !isValidCell(endX, endY, width, height)) {
+        if (!isValidCell(startX, startY, board) || !isValidCell(endX, endY, board)) {
             return -1;
         }
 
@@ -50,7 +51,7 @@ public class BFS<T extends Chessman> {
                     // и поставить ее в очередь на +1 расстояние
                     int x1 = x + t.getDx(i);
                     int y1 = y + t.getDy(i);
-                    if (isValidCell(x1, y1, width, height)) {
+                    if (isValidCell(x1, y1, board)) {
                         queue.add(new ChessBoardCell(x1, y1, dist + 1));
                     }
                 }
@@ -60,7 +61,7 @@ public class BFS<T extends Chessman> {
 
     }
 
-    public boolean isValidCell(int x, int y, int width, int height) {
-        return x >= 0 && x < width && y >= 0 && y < height;
+    public boolean isValidCell(int x, int y, Board board) {
+        return x >= 0 && x < board.getWidth() && y >= 0 && y < board.getHeight();
     }
 }
