@@ -14,18 +14,10 @@ public class Board {
         this.height = height;
     }
 
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
     //TODO: уместен ли здесь метод isValidCell?
     public boolean isValidCell(ChessBoardCell chessBoardCell) {
-        return chessBoardCell.getX() >= 0 && chessBoardCell.getX() < this.getWidth()
-                && chessBoardCell.getY() >= 0 && chessBoardCell.getY() < this.getHeight();
+        return chessBoardCell.getX() >= 0 && chessBoardCell.getX() < this.width
+                && chessBoardCell.getY() >= 0 && chessBoardCell.getY() < this.height;
     }
 
 }
