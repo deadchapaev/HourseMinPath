@@ -28,10 +28,9 @@ public class BFS<T extends Chessman> {
         }
 
         // проверка, посещена ли ячейка матрицы раньше или нет
-        //TODO: мы уже в java8 
-        Set<Cell> visited = new HashSet<Cell>();
+        Set<Cell> visited = new HashSet<>();
         // создать очередь и поставить в очередь первый узел
-        Queue<Cell> queue = new ArrayDeque<Cell>();
+        Queue<Cell> queue = new ArrayDeque<>();
         queue.add(startCell);
 
         // выполняем пока очередь не пуста
