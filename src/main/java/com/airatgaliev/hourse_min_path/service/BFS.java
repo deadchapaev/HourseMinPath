@@ -13,6 +13,7 @@ import com.airatgaliev.hourse_min_path.model.interfaces.Chessman;
 @Component
 public class BFS<T extends Chessman> {
 
+    //TODO:неудобная сигнатура метода (вынесем Board)
     public int getMinPath(int width, int height, int startX, int startY, int endX, int endY, T t) {
         // проверка, посещена ли ячейка матрицы раньше или нет
         Set<ChessBoardCell> visited = new HashSet<ChessBoardCell>();
