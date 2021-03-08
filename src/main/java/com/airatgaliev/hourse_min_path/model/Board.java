@@ -14,8 +14,7 @@ public class Board {
         this.height = height;
     }
 
-    //TODO: уместен ли здесь метод isValidCell?
-    public boolean isValidCell(ChessBoardCell chessBoardCell) {
+    public boolean contains(ChessBoardCell chessBoardCell) {
         return chessBoardCell.getX() >= 0 && chessBoardCell.getX() < this.width
                 && chessBoardCell.getY() >= 0 && chessBoardCell.getY() < this.height;
     }

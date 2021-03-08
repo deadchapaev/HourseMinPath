@@ -29,7 +29,7 @@ public class BFS<T extends Chessman> {
         // создать очередь и поставить в очередь первый узел
         Queue<ChessBoardCell> queue = new ArrayDeque<ChessBoardCell>();
         queue.add(startChessBoardCell);
-        if (!board.isValidCell(startChessBoardCell) || !board.isValidCell(endChessBoardCell)) {
+        if (!board.contains(startChessBoardCell) || !board.contains(endChessBoardCell)) {
             return -1;
         }
 
@@ -56,7 +56,7 @@ public class BFS<T extends Chessman> {
                     // из текущей позиции на шахматной доске
                     // и поставить ее в очередь на +1 расстояние
                     ChessBoardCell chessBoardCell = new ChessBoardCell(x + t.getDx(i), y + t.getDy(i));
-                    if (board.isValidCell(chessBoardCell)) {
+                    if (board.contains(chessBoardCell)) {
                         queue.add(new ChessBoardCell(chessBoardCell.getX(), chessBoardCell.getY(), dist + 1));
                     }
                 }
