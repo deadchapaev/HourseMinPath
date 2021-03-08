@@ -17,6 +17,7 @@ import com.airatgaliev.hourse_min_path.model.Count;
 import com.airatgaliev.hourse_min_path.model.Hourse;
 import com.airatgaliev.hourse_min_path.model.interfaces.Chessman;
 import com.airatgaliev.hourse_min_path.service.BFS;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 @RequestMapping(value = "/hourse/rest")
@@ -34,8 +35,7 @@ public class HoursePathController {
         this.hourse = hourse;
     }
 
-    //TODO:изучаем работу spring - есть GetMapping
-    @RequestMapping(value = "/count", method = RequestMethod.GET)
+    @GetMapping(path = "/count")
     public HttpEntity<Count> count(@RequestParam(value = "width", defaultValue = "8") int width,
             @RequestParam(value = "height", defaultValue = "8") int height,
             @RequestParam(value = "start", defaultValue = "A1") String start,
