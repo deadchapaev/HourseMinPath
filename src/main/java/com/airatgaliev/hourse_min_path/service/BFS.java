@@ -8,7 +8,7 @@ import java.util.Set;
 
 import org.springframework.stereotype.Component;
 
-import com.airatgaliev.hourse_min_path.model.ChessBoardCell;
+import com.airatgaliev.hourse_min_path.model.Cell;
 import com.airatgaliev.hourse_min_path.model.interfaces.Chessman;
 
 @Component
@@ -17,31 +17,31 @@ public class BFS<T extends Chessman> {
     public int getMinPath(int width, int height, int startX, int startY, int endX, int endY, T t) {
         Board board = new Board(width, height);
         //TODO:слишком многословное название для класса. Из контекста и так ясно.
-        ChessBoardCell startChessBoardCell = new ChessBoardCell(startX, startY);
-        ChessBoardCell endChessBoardCell = new ChessBoardCell(endX, endY);
+        Cell startChessBoardCell = new Cell(startX, startY);
+        Cell endChessBoardCell = new Cell(endX, endY);
         return getMinPath(startChessBoardCell, endChessBoardCell, board, t);
     }
 
-    private int getMinPath(ChessBoardCell startChessBoardCell, ChessBoardCell endChessBoardCell, Board board, T t) {
+    private int getMinPath(Cell startCell, Cell endCell, Board board, T t) {
 
         // проверка, посещена ли ячейка матрицы раньше или нет
-        Set<ChessBoardCell> visited = new HashSet<ChessBoardCell>();
+        Set<Cell> visited = new HashSet<Cell>();
 
         // создать очередь и поставить в очередь первый узел
-        Queue<ChessBoardCell> queue = new ArrayDeque<ChessBoardCell>();
-        queue.add(startChessBoardCell);
-        if (!board.contains(startChessBoardCell) || !board.contains(endChessBoardCell)) {
+        Queue<Cell> queue = new ArrayDeque<Cell>();
+        queue.add(startCell);
+        if (!board.contains(startCell) || !board.contains(endCell)) {
             return -1;
         }
 
         // выполняем пока очередь не пуста
         while (!queue.isEmpty()) {
-            ChessBoardCell cell = queue.poll();
+            Cell cell = queue.poll();
             int x = cell.getX();
             int y = cell.getY();
             int dist = cell.getDist();
             // если пункт назначения достигнут, вернуть расстояние
-            if (x == endChessBoardCell.getX() && y == endChessBoardCell.getX()) {
+            if (x == endCell.getX() && y == endCell.getX()) {
                 return dist;
             }
 
@@ -56,9 +56,9 @@ public class BFS<T extends Chessman> {
                     // Получить новую действительную позицию коня
                     // из текущей позиции на шахматной доске
                     // и поставить ее в очередь на +1 расстояние
-                    ChessBoardCell chessBoardCell = new ChessBoardCell(x + t.getDx(i), y + t.getDy(i));
-                    if (board.contains(chessBoardCell)) {
-                        queue.add(new ChessBoardCell(chessBoardCell.getX(), chessBoardCell.getY(), dist + 1));
+                    Cell nextCell = new Cell(x + t.getDx(i), y + t.getDy(i));
+                    if (board.contains(nextCell)) {
+                        queue.add(new Cell(nextCell.getX(), nextCell.getY(), dist + 1));
                     }
                 }
             }
