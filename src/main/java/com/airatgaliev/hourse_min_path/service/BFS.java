@@ -21,6 +21,8 @@ public class BFS<T extends Chessman> {
         Queue<ChessBoardCell> queue = new ArrayDeque<ChessBoardCell>();
         ChessBoardCell startCell = new ChessBoardCell(startX, startY);
         queue.add(startCell);
+        //TODO:что-то не то с этим условием
+        //код слишком сильно уходит вправо по отступам
         if (isValidCell(startX, startY, width, height) && isValidCell(endX, endY, width, height)) {
             // выполняем пока очередь не пуста
             while (!queue.isEmpty()) {
@@ -52,8 +54,10 @@ public class BFS<T extends Chessman> {
                     }
                 }
             }
+            //TODO:здесь и в другой ветке возврат -1
             return -1;
         } else {
+            //TODO:ветка просто какая-то бессмысленная
             return -1;
         }
 
