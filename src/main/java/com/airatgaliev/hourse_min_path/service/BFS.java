@@ -42,6 +42,7 @@ public class BFS<T extends Chessman> {
             }
 
             // Пропустить, если местоположение посещалось раньше
+            //TODO:не все любят continue, но он полезен
             if (!visited.contains(cell)) {
                 // пометить текущий узел как посещенный
                 visited.add(cell);
