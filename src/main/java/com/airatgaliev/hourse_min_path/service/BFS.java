@@ -14,13 +14,6 @@ import com.airatgaliev.hourse_min_path.model.interfaces.Chessman;
 @Component
 public class BFS<T extends Chessman> {
 
-    public int getMinPath(int width, int height, int startX, int startY, int endX, int endY, T t) {
-        Board board = new Board(width, height);
-        Cell startCell = new Cell(startX, startY);
-        Cell endCell = new Cell(endX, endY);
-        return getMinPath(startCell, endCell, board, t);
-    }
-
     public int getMinPath(Cell startCell, Cell endCell, Board board, T t) {
         if (!board.contains(startCell) || !board.contains(endCell)) {
             return -1;
