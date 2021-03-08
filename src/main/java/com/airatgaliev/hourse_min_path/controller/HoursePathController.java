@@ -34,6 +34,7 @@ public class HoursePathController {
         this.hourse = hourse;
     }
 
+    //TODO:изучаем работу spring - есть GetMapping
     @RequestMapping(value = "/count", method = RequestMethod.GET)
     public HttpEntity<Count> count(@RequestParam(value = "width", defaultValue = "8") int width,
             @RequestParam(value = "height", defaultValue = "8") int height,
