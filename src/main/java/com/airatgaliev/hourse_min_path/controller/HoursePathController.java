@@ -59,7 +59,6 @@ public class HoursePathController {
         } catch (NullPointerException e) {
             return -1;
         }
-
     }
 
     private int getMinPath(String start, String end, int width, int height) throws NumberFormatException {
@@ -77,6 +76,7 @@ public class HoursePathController {
 
     public int NumberFromExcelColumn(String column) {
         int retVal = 0;
+        //TODO: зачем здесь локал?
         String col = column;
         for (int iChar = col.length() - 1; iChar >= 0; iChar--) {
             char colPiece = col.charAt(iChar);
