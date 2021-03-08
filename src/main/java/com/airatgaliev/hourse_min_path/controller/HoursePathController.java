@@ -44,6 +44,7 @@ public class HoursePathController {
     }
 
     private int getMinPath(String start, String end, int width, int height) throws NumberFormatException {
+        //TODO: маленький совет - делать методы Caught
         try {
             Cell startCell = buildCell(start);
             Cell endCell = buildCell(end);
