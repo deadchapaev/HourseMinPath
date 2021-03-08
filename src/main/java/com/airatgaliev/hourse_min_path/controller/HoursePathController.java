@@ -47,12 +47,6 @@ public class HoursePathController {
         return ResponseEntity.ok().body(count);
     }
 
-    private static Link getLink(int width, int height, String start, String end) {
-        return linkTo(methodOn(HoursePathController.class)
-                .count(width, height, start.toUpperCase(), end.toUpperCase()))
-                .withSelfRel();
-    }
-
     private int getMinPathCaught(String start, String end, int width, int height) {
         try {
             return getMinPath(start, end, width, height);
@@ -82,5 +76,11 @@ public class HoursePathController {
             retVal = retVal + colNum * (int) Math.pow(26, col.length() - (iChar + 1));
         }
         return retVal - 1;
+    }
+
+    private static Link getLink(int width, int height, String start, String end) {
+        return linkTo(methodOn(HoursePathController.class)
+                .count(width, height, start.toUpperCase(), end.toUpperCase()))
+                .withSelfRel();
     }
 }
