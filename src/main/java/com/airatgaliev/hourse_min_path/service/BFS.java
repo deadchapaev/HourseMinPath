@@ -16,7 +16,10 @@ public class BFS<T extends Chessman> {
 
     public int getMinPath(int width, int height, int startX, int startY, int endX, int endY, T t) {
         Board board = new Board(width, height);
-        //TODO:сделаем перегруженный метод с Board
+        return getMinPath(startX, startY, board, endX, endY, t);
+    }
+
+    private int getMinPath(int startX, int startY, Board board, int endX, int endY, T t) {
         // проверка, посещена ли ячейка матрицы раньше или нет
         Set<ChessBoardCell> visited = new HashSet<ChessBoardCell>();
 
@@ -59,7 +62,6 @@ public class BFS<T extends Chessman> {
             }
         }
         return -1;
-
     }
 
     public boolean isValidCell(int x, int y, Board board) {
