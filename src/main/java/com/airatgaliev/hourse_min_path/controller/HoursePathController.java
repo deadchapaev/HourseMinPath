@@ -74,10 +74,8 @@ public class HoursePathController {
         return new Cell(x, y);
     }
 
-    public int NumberFromExcelColumn(String column) {
+    public int NumberFromExcelColumn(String col) {
         int retVal = 0;
-        //TODO: зачем здесь локал?
-        String col = column;
         for (int iChar = col.length() - 1; iChar >= 0; iChar--) {
             char colPiece = col.charAt(iChar);
             int colNum = colPiece - 64;
