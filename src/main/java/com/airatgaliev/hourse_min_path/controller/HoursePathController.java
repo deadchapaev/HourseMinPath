@@ -1,5 +1,6 @@
 package com.airatgaliev.hourse_min_path.controller;
 
+import com.airatgaliev.hourse_min_path.model.Cell;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,8 +48,10 @@ public class HoursePathController {
             //TODO:надо бы переписать на Cell
             int startX = NumberFromExcelColumn(start.replaceAll("[0-9]", ""));
             int startY = Integer.parseInt(start.toUpperCase().replaceAll("[A-Z]", "")) - 1;
+            Cell startCell = new Cell(startX, startY);
             int endX = NumberFromExcelColumn(end.replaceAll("[0-9]", ""));
             int endY = Integer.parseInt(end.toUpperCase().replaceAll("[A-Z]", "")) - 1;
+            Cell endCell = new Cell(endX, endY);
             minPath = bfs.getMinPath(width, height, startX, startY, endX, endY, hourse);
         } catch (NullPointerException e) {
             minPath = -1;
