@@ -35,7 +35,7 @@ public class HoursePathController {
             @RequestParam(value = "height", defaultValue = "8") int height,
             @RequestParam(value = "start", defaultValue = "A1") String start,
             @RequestParam(value = "end", defaultValue = "H8") String end) {
-        int minPath = getMinPath(start, end, width, height);
+        int minPath = getMinPathCaught(start, end, width, height);
         Count count = new Count(String.format(TEMPLATE, minPath));
         count.add(linkTo(methodOn(HoursePathController.class).count(width, height, start.toUpperCase(), end.toUpperCase())).withSelfRel());
 
@@ -43,17 +43,20 @@ public class HoursePathController {
 
     }
 
-    private int getMinPath(String start, String end, int width, int height) throws NumberFormatException {
-        //TODO: маленький совет - делать методы Caught
+    private int getMinPathCaught(String start, String end, int width, int height) {
         try {
-            Cell startCell = buildCell(start);
-            Cell endCell = buildCell(end);
-            Board board = new Board(width, height);
-            return bfs.getMinPath(startCell, endCell, board, hourse);
+            return getMinPath(start, end, width, height);
         } catch (NullPointerException e) {
             return -1;
         }
 
+    }
+
+    private int getMinPath(String start, String end, int width, int height) throws NumberFormatException {
+        Cell startCell = buildCell(start);
+        Cell endCell = buildCell(end);
+        Board board = new Board(width, height);
+        return bfs.getMinPath(startCell, endCell, board, hourse);
     }
 
     private Cell buildCell(String cellStr) throws NumberFormatException {
