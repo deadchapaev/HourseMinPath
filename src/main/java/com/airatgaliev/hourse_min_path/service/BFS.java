@@ -27,9 +27,7 @@ public class BFS<T extends Chessman> {
 
         // создать очередь и поставить в очередь первый узел
         Queue<ChessBoardCell> queue = new ArrayDeque<ChessBoardCell>();
-        //TODO:один в один как startChessBoardCell
-        ChessBoardCell startCell = new ChessBoardCell(startX, startY);
-        queue.add(startCell);
+        queue.add(startChessBoardCell);
         if (!isValidCell(startChessBoardCell, board) || !isValidCell(endChessBoardCell, board)) {
             return -1;
         }
