@@ -24,12 +24,15 @@ public class HoursePathController {
 
     private static final String TEMPLATE = "%d";
 
-    //TODO:final, constructor, etc...
-    @Autowired
-    private BFS<Chessman> bfs;
+    private final BFS<Chessman> bfs;
+
+    private final Hourse hourse;
 
     @Autowired
-    private Hourse hourse;
+    public HoursePathController(BFS<Chessman> bfs, Hourse hourse) {
+        this.bfs = bfs;
+        this.hourse = hourse;
+    }
 
     @RequestMapping(value = "/count", method = RequestMethod.GET)
     public HttpEntity<Count> count(@RequestParam(value = "width", defaultValue = "8") int width,
