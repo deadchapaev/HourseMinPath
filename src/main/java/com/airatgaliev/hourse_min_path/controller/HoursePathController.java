@@ -21,7 +21,7 @@ import org.springframework.hateoas.Link;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
-@RequestMapping(value = "/hourse/rest")
+@RequestMapping("/hourse/rest")
 public class HoursePathController {
 
     private static final String TEMPLATE = "%d";
@@ -36,7 +36,7 @@ public class HoursePathController {
         this.hourse = hourse;
     }
 
-    @GetMapping(path = "/count")
+    @GetMapping("/count")
     public HttpEntity<Count> count(@RequestParam(defaultValue = "8") int width,
             @RequestParam(defaultValue = "8") int height,
             @RequestParam(defaultValue = "A1") String start,
