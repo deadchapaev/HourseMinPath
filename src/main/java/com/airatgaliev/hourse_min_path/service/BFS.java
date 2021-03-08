@@ -19,6 +19,7 @@ public class BFS<T extends Chessman> {
         return getMinPath(startX, startY, board, endX, endY, t);
     }
 
+    //TODO: сигнатура всё равно большая, надо переделать на CheccBoardCell
     private int getMinPath(int startX, int startY, Board board, int endX, int endY, T t) {
         // проверка, посещена ли ячейка матрицы раньше или нет
         Set<ChessBoardCell> visited = new HashSet<ChessBoardCell>();
