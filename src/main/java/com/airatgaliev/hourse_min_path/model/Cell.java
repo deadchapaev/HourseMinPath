@@ -55,14 +55,13 @@ public class Cell {
         if (y != chessBoard.y) {
             return false;
         }
-        return dist == chessBoard.dist;
+        return true;
     }
 
     @Override
     public int hashCode() {
         int result = x;
         result = 31 * result + y;
-        result = 31 * result + dist;
         return result;
     }
 
