@@ -33,6 +33,7 @@ public class HoursePathController {
             @RequestParam(value = "height", defaultValue = "8") int height,
             @RequestParam(value = "start", defaultValue = "A1") String start,
             @RequestParam(value = "end", defaultValue = "H8") String end) {
+        //TODO:здесь напрашивается отдельный метод, ибо цель trycatch отдать minPath
         int minPath;
         try {
             int startX = NumberFromExcelColumn(start.replaceAll("[0-9]", ""));
