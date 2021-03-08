@@ -42,21 +42,21 @@ public class BFS<T extends Chessman> {
             }
 
             // Пропустить, если местоположение посещалось раньше
-            //TODO:не все любят continue, но он полезен
-            if (!visited.contains(cell)) {
-                // пометить текущий узел как посещенный
-                visited.add(cell);
+            if (visited.contains(cell)) {
+                continue;
+            }
 
-                // проверяем все 8 возможных движений коня
-                // и вставляем в очередь каждое действующее движение
-                for (int i = 0; i < 8; ++i) {
-                    // Получить новую действительную позицию коня
-                    // из текущей позиции на шахматной доске
-                    // и поставить ее в очередь на +1 расстояние
-                    Cell nextCell = new Cell(cell.getX() + t.getDx(i), cell.getY() + t.getDy(i), cell.getDist() + 1);
-                    if (board.contains(nextCell)) {
-                        queue.add(nextCell);
-                    }
+            // пометить текущий узел как посещенный
+            visited.add(cell);
+            // проверяем все 8 возможных движений коня
+            // и вставляем в очередь каждое действующее движение
+            for (int i = 0; i < 8; ++i) {
+                // Получить новую действительную позицию коня
+                // из текущей позиции на шахматной доске
+                // и поставить ее в очередь на +1 расстояние
+                Cell nextCell = new Cell(cell.getX() + t.getDx(i), cell.getY() + t.getDy(i), cell.getDist() + 1);
+                if (board.contains(nextCell)) {
+                    queue.add(nextCell);
                 }
             }
         }
