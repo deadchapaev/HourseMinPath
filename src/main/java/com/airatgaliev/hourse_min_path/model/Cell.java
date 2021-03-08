@@ -2,14 +2,10 @@ package com.airatgaliev.hourse_min_path.model;
 
 public class Cell {
 
-    private int x, y, dist; // координаты ячейки и минимальный путь
-
-    public Cell() {
-    }
+    private final int x, y, dist; // координаты ячейки и минимальный путь
 
     public Cell(int x, int y) {
-        this.x = x;
-        this.y = y;
+        this(x, y, 0);
     }
 
     public Cell(int x, int y, int dist) {
@@ -22,16 +18,8 @@ public class Cell {
         return x;
     }
 
-    public void setX(int x) {
-        this.x = x;
-    }
-
     public int getY() {
         return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
     }
 
     public int getDist() {
