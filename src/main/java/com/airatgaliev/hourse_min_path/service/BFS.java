@@ -37,6 +37,7 @@ public class BFS<T extends Chessman> {
         // выполняем пока очередь не пуста
         while (!queue.isEmpty()) {
             Cell cell = queue.poll();
+            //TODO:эти локалы только отвлекают
             int x = cell.getX();
             int y = cell.getY();
             // если пункт назначения достигнут, вернуть расстояние
