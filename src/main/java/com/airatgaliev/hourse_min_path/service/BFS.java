@@ -65,6 +65,7 @@ public class BFS<T extends Chessman> {
         return -1;
     }
 
+    //TODO: уместен ли здесь метод isValidCell?
     public boolean isValidCell(ChessBoardCell chessBoardCell, Board board) {
         return chessBoardCell.getX() >= 0 && chessBoardCell.getX() < board.getWidth()
                 && chessBoardCell.getY() >= 0 && chessBoardCell.getY() < board.getHeight();
