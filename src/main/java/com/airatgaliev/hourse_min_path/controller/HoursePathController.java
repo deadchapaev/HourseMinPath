@@ -33,6 +33,7 @@ public class HoursePathController {
             @RequestParam(value = "height", defaultValue = "8") int height,
             @RequestParam(value = "start", defaultValue = "A1") String start,
             @RequestParam(value = "end", defaultValue = "H8") String end) {
+        //TODO:что с областью видимости локалов?
         int startX, startY, endX, endY, minPath;
         try {
             startX = NumberFromExcelColumn(start.replaceAll("[0-9]", ""));
